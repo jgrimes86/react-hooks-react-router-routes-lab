@@ -1,14 +1,28 @@
 import { actors } from "../data";
-
+import NavBar from "../components/NavBar";
 
 function Actors() {
+  
+  const actorDisplay = actors.map(actor => {
+    const movieList = actor.movies.map(movie => <li key={movie}>{movie}</li>)
+    return (
+      <article key={actor}>
+        <h2>{actor.name}</h2>
+        <ul>
+          {movieList}
+        </ul>
+      </article>
+    )
+  })
+  
   return (
     <>
       <header>
-        {/* What component should go here? */}
+        <NavBar />
+        <h1>Actors Page</h1>
       </header>
       <main>
-        {/* Actor info here! */}
+        {actorDisplay}
       </main>
     </>
   );

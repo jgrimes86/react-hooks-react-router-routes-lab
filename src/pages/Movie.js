@@ -1,13 +1,27 @@
+import { useParams } from "react-router-dom";
 import { movies } from "../data";
 
 function Movie() {
+
+  const params = useParams();
+
+  const movie = movies.find(movie => movie.title === params.title)
+
+  const {title, time, genres} = movie;
+
+  const genreList = genres.map((genre) => {
+    return <span key={`movie_${title}`} >{genre}</span>})
+
   return (
     <>
       <header>
-        {/* What component should go here? */}
+        <h1>{title}</h1>
       </header>
       <main>
-        {/* Movie info here! */}
+        <p>{time}</p>
+        <div>
+          {genreList}
+        </div>
       </main>
     </>
   );
